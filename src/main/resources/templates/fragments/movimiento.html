@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="fragments/headini :: head"></th:block>
+</head>
+<body>
+
+<div class="container">
+<div th:fragment="mov">
+			<div>
+			
+				<table class="table" th:if="${mov != null}">
+				<h1>Movimientos Ventas</h1>
+				
+					<tr th:each="m : ${mov}">
+					<td th:text="${m.idVenta}"></td>
+					<!--  <td th:text="${m.usuario}"></td>-->
+					<td th:text="${m.IDproducto}"></td>
+					<td th:text="${m.descripcion}"></td>
+					<td th:text="${m.fecha}"></td>
+					<td th:text="${m.cant}"></td>
+					<td th:text="${m.precioSIVA}"></td>
+					<td th:text="${m.oferta}"></td>
+					<td th:text="${m.importe}"></td>
+					</tr>
+				</table>
+			</div>
+</div>
+</div>
+</body>
+</html>

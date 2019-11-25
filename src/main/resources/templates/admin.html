@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="fragments/headini :: head"></th:block>
+
+</head>
+<body >
+<div class="container">
+<th:block th:include="fragments/cabecera :: header"></th:block>
+<div align="center" th:if="${ocultar != 1}"><th:block th:include="fragments/welcome :: welc"></th:block></div>
+<br/>
+<th:block th:include="tblProductos :: stock"></th:block>
+<th:block th:include="fragments/movimiento :: mov"></th:block>
+
+<th:block th:include="fragments/pie :: pie"></th:block>
+</div>
+</body>
+</html>

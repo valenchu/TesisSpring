@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Agregar este codigo para los diferentes fragmenteos de la pag -->
+<th:block th:include="fragments/headini :: head"></th:block>
+</head>
+<body>
+<div class="container">
+
+<br/>
+<h1 align="center">Inicio Sesión</h1>
+<form th:action="@{/golum}" method="get" th:object="${l}">
+<div align="center"  >
+<p>Usuario</p>
+ <input th:type="text" th:name="nombre"> <br/>
+ <p>Contraseña</p>
+ <input th:type="password" th:name="contrasena"> <br/><br/>
+
+ <button type="submit" >Ingresar</button>
+
+</div>
+<div class="error" align="center">
+<p  th:if="${errorms != null}" th:text="${errorms}"></p>
+</div>
+</form>
+
+</div>
+
+
+</body>
+</html>

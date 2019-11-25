@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="fragments/headini :: head"></th:block>
+</head>
+<body>
+
+	<div class="container">
+		<div th:fragment="stock">
+			<div class="pageUp">
+				<nav aria-label="pag">
+					<ul class="pagination justify-content-center">
+						<!-- Si anterior que es el boton de volver es igual a 0 osea que esta en la pag
+					1 se desabilita para presionarlo. Esta condicion se indica en th:classappend-->
+						<li class="page-item"
+							th:classappend="${Anterior == 0 ? 'disabled': ''}"><a
+							class="page-link" th:if="${Anterior != null}"
+							th:href="@{|/tabla?num=${Anterior}|}">Ant</a></li>
+						<li class="page-item" th:each="pagi : ${num}"
+							th:classappend="${reciente == pagi ? 'active' : ''}"><a
+							class="page-link" th:href="@{|/tabla?num=${pagi}|}"
+							th:text="${pagi}"></a></li>
+						<li class="page-item"
+							th:classappend="${reciente == Ultima ? 'disabled' : ''}"><a
+							class="page-link" th:if="${Siguiente != null}"
+							th:href="@{|/tabla?num=${Siguiente}|}">Sig</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div>
+			
+				<table class="table" th:if="${tabla1 != null}">
+				<h1>Stock Productos</h1>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Descripción</th>
+						<th scope="col">PrecioS/IVA</th>
+						<th scope="col">PrecioC/IVA</th>
+						<th scope="col">Cantidad</th>
+						<th scope="col">Oferta</th>
+						<th scope="col">AltaBajaPro</th>
+						<th scope="col">AltaBajaPed</th>
+					</tr>
+					<tr th:each="t : ${tabla1}">
+						<td th:text="${t.idProducto}"></td>
+						<td th:text="${t.descripcio}"></td>
+						<td th:text="${t.preciosiniva}"></td>
+						<td th:text="${t.precioconiva}"></td>
+						<td th:text="${t.cant}"></td>
+						<td th:text="${t.oferta}"></td>
+						<td th:text="${t.alta_baja_productos}"></td>
+						<td th:text="${t.alta_baja_pedidos}"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="pageDown">
+				<nav aria-label="pag">
+					<ul class="pagination justify-content-center">
+						<!-- Si anterior que es el boton de volver es igual a 0 osea que esta en la pag
+					1 se desabilita para presionarlo. Esta condicion se indica en th:classappend-->
+						<li class="page-item"
+							th:classappend="${Anterior == 0 ? 'disabled': ''}"><a
+							class="page-link" th:if="${Anterior != null}"
+							th:href="@{|/tabla?num=${Anterior}|}">Ant</a></li>
+						<li class="page-item" th:each="pagi : ${num}"
+							th:classappend="${reciente == pagi ? 'active' : ''}"><a
+							class="page-link" th:href="@{|/tabla?num=${pagi}|}"
+							th:text="${pagi}"></a></li>
+						<li class="page-item"
+							th:classappend="${reciente == Ultima ? 'disabled' : ''}"><a
+							class="page-link" th:if="${Siguiente != null}"
+							th:href="@{|/tabla?num=${Siguiente}|}">Sig</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

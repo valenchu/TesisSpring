@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+div.error {
+	color: red;
+}
+.table{
+	margin-right: auto;
+}
+
+.navbar-logo{
+  display: inline-block;
+  vertical-align: middle;
+  width: 70px;
+}
+.navbar-logo img{
+  display: block;
+  width: 45%;
+  height: auto;
+}
+.estilo-2 {
+  background: white;
+  background-clip: padding-box;
+  border-radius: 1em;
+}
+ul
+{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
+
+.box{
+	background-color: gray;
+	 justify-content: space-between;
+    display:flex;
+     margin-right: 80px;
+     margin-left:80px;	 
+     bottom: 0;
+     text-shadow: black;
+}
+#sesion{
+	text-transform: uppercase;
+	
+}
+.pageUp{
+	float: right;
+}
+.pageDown{
+	float: right;
+}

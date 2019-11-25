@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head >
+<th:block th:include="fragments/headini :: header"></th:block>
+</head>
+<body>
+<div class= "container">
+<div th:fragment="header">
+
+<nav class="navbar navbar-dark bg-dark">
+ <a class="navbar-logo" th:href="@{/welcome}">
+    <img  th:src="@{imag/Logo58x125.png}"></a>
+    <ul class="navbar-nav mr-auto">
+     <li class="nav-item active">
+    <a class="btn btn-secondary"  th:href="@{/tabla}" >Stock</a> 
+    <a class="btn btn-secondary"  th:href="@{/mov}" >Movimientos</a>
+    </li>
+    </ul>
+</nav>
+
+</div>
+</div>
+
+</body>
+</html>

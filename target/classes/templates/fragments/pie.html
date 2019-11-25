@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<div class="container">
+
+
+<div th:fragment="pie">
+<br/><br/><br/>
+<footer >
+  
+ <div class="box text-warning" >
+ <span id="sesion" th:if="${sesion != null}" th:with="ses=${sesion}" th:text="${ses}" ></span>
+ <span id="sesion" th:if="${rol != null}"  th:text="${rol}" ></span>
+<div class="date ">
+<span>FECHA:</span>
+    <span id="weekDay" class="weekDay"></span>, 
+    <span id="day" class="day"></span> de
+    <span id="month" class="month"></span> del
+    <span id="year" class="year"></span>
+</div>
+
+<div class="hora">
+<span>HORA:</span>
+    <span id="hours" class="hours"></span> :
+    <span id="minutes" class="minutes"></span> :
+    <span id="seconds" class="seconds"></span>
+</div>
+</div> 
+
+<script src="js/clock.js" th:src="@{js/clock.js}"></script>
+</footer>
+</div>
+
+</div>
+
+</body>
+</html>
