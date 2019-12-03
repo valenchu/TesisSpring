@@ -7,10 +7,14 @@
 <body>
 <div class="container">
 <th:block th:include="fragments/cabecera :: header"></th:block>
+<div align="center" th:if="${ocultar != 1}"><th:block th:include="fragments/welcome :: welc"></th:block></div>
+<br/>
 <th:block th:include="tblProductos :: stock"></th:block>
-<th:block th:include="fragments/movimiento :: mov"></th:block>
-<th:block th:include="fragments/welcome :: welc"></th:block>
-<h1>Hola mundo Empleado</h1>
+<div >
+<div th:if="${filTab != null}"> <th:block th:replace="fragments/movimiento :: mov"></th:block></div>
+<th:block th:if="${fecha != null}" th:replace="fragments/prueba :: movv"></th:block>
+</div>
+<br>
 <th:block th:include="fragments/pie :: pie"></th:block>
 </div>
 </body>

@@ -6,24 +6,29 @@
 </head>
 <body>
 <div class="container">
-
-<br/>
-<h1 align="center">Inicio Sesión</h1>
-<form th:action="@{/golum}" method="get" th:object="${l}">
 <div align="center"  >
-<p>Usuario</p>
- <input th:type="text" th:name="nombre"> <br/>
- <p>Contraseña</p>
- <input th:type="password" th:name="contrasena"> <br/><br/>
+<br/>
+<h1 align="center"><span class="badge badge-dark">Inicio Sesión</span></h1>
+<form th:action="@{/golum}" method="get" th:object="${l}">
+<div>
+<h4><p class="badge badge-pill badge-secondary">Usuario</p></h4>
 
- <button type="submit" >Ingresar</button>
+ 
+ <input  th:type="text" th:name="nombre"> <br/>
+  
+ 
+ <h4><p class="badge badge-pill badge-secondary">Contraseña</p></h4>
+ <input class="col-xs-4" th:type="password" th:name="contrasena"> <br/><br/>
 
+ <button type="submit"  class="btn btn-outline-secondary">Ingresar</button>
 </div>
-<div class="error" align="center">
-<p  th:if="${errorms != null}" th:text="${errorms}"></p>
-</div>
+
+
 </form>
-
+<h5>
+<span class="badge badge-danger"  th:if="${errorms != null}" th:text="${errorms}"></span>
+</h5>
+</div>
 </div>
 
 

@@ -8,15 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tesis.modelo.Login;
-import com.tesis.repo.UsuarioJPA;
 import com.tesis.servicio.UsuarioServicio;
 
 
 @Controller
 public class ControladorLogin {
 	 ModelAndView mo ;
-	 @Autowired
-	 private UsuarioJPA usu;
 	 @Autowired
 	 private UsuarioServicio userService;
 	

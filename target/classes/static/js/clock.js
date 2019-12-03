@@ -1,3 +1,5 @@
+console.log('object');
+
 
 var udateTime = function() {
     let currentDate = new Date(),

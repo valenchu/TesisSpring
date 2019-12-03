@@ -8,9 +8,12 @@ import org.hibernate.sql.Insert;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -19,15 +22,14 @@ import java.util.List;
  */
 @Entity
 @Table(name = "venta")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Getter @Setter
 public class Venta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idVenta;
 
 	private String usuario;
@@ -36,9 +38,10 @@ public class Venta implements Serializable {
 
 	//bi-directional many-to-one association to Detallevta
 	//El joincolum debe hacer referencia a la llave foranea de detallevta
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idVenta", referencedColumnName="idVenta",insertable = false,updatable = false)
-	private Detallevta detallevta;
+	/*@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="idVenta", referencedColumnName="idVenta")*/
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.EAGER, orphanRemoval = true)
+	private Set<Detallevta> detallevtas;
 
 
 }

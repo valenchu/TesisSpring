@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tesis.modelo.Login;
-import com.tesis.repo.UsuarioJPA;
+import com.tesis.repo.UsuarioRepository;
 import com.tesis.servicio.ProductoServicio;
 
 @Controller
@@ -15,25 +15,26 @@ import com.tesis.servicio.ProductoServicio;
 public class Controlador {
 
 	@Autowired
-	private UsuarioJPA user ;
+	private UsuarioRepository user;
 	@Autowired
 	private ProductoServicio prs;
-	
+
 	@GetMapping("/index")
 
-	public String listar () {
-		
+	public String listar() {
+
 		return "index";
-		
+
 	}
+
 	@GetMapping("/welcome")
 	public String mos(Model m) {
 		String dato = "Redirect:/";
 		dato = prs.fastCom(Login.rol);
-		if(dato != "redirect:/") {
-		m.addAttribute("rol",Login.rol.toUpperCase());
+		if (dato != "redirect:/") {
+			m.addAttribute("rol", Login.rol.toUpperCase());
 		}
-		
+
 		return dato;
 	}
 }

@@ -1,11 +1,17 @@
 package com.tesis.entidad;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
@@ -19,25 +25,31 @@ import java.util.List;
 /**
  *
  */
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Getter @Setter
 public class Detallevta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idventa_idproducto;
 	private int idVenta;
+	
 	private int IDproducto;
-
+	@Column(name = "Descripcion")
 	private String descripcion;
+	@Column(name = "Cant")
 	private int cant;
 	private double precioSIVA;
 	private int oferta;
+	@Column(name = "Importe")
 	private double importe;
+	@Column(name = "Total")
 	private double total;
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Column(name = "Fecha")
 	private Date fecha;
 	// bi-directional many-to-one association to Producto
 	@ManyToOne
@@ -45,21 +57,9 @@ public class Detallevta implements Serializable {
 	private Productos productos;
 
 	// bi-directional many-to-one association to Venta
-	@OneToMany(mappedBy = "detallevta",fetch = FetchType.LAZY)
-	private List<Venta> ventas;
+	@ManyToOne
+	@JoinColumn(name="idVenta",insertable = false, updatable = false)
+	private Venta venta;
 
-	public Venta addVenta(Venta venta) {
-		getVentas().add(venta);
-		venta.setDetallevta(this);
-
-		return venta;
-	}
-
-	public Venta removeVenta(Venta venta) {
-		getVentas().remove(venta);
-		venta.setDetallevta(null);
-
-		return venta;
-	}
 
 }

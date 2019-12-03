@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tesis.entidad.Usuarios;
 @Repository
-public interface UsuarioJPA extends JpaRepository<Usuarios, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuarios, Long> {
 
 	String findByNom(String nom);
 

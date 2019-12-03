@@ -13,11 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "productos")
-@Data
+@Getter @Setter
 public class Productos implements Serializable {
 
 	@Id

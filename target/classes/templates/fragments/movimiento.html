@@ -1,31 +1,144 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <th:block th:include="fragments/headini :: head"></th:block>
 </head>
 <body>
 
-<div class="container">
-<div th:fragment="mov">
-			<div>
+	<div class="container">		
+	<div th:fragment="buscar" th:if="${filTab != null}">		
+						<form  th:action="@{/fecha}" method="get" >
+							<div style="text-align: center;">
+								<h5 ><span class="badge badge-dark" > Desde </span></h5> <input th:type="date" th:name="desde" />
+
+								<h5 ><span class="badge badge-dark" > Hasta </span></h5> <input th:type="date" th:name="hasta" />
+								<br/>
+								<button type="submit" >Buscar por fecha</button>	
+							</div>	
+												
+						</form>	
+						<span class="badge badge-danger" th:if="${ERROR != null}" th:text="${ERROR}"></span>			
+						<span class="badge badge-danger" th:if="${noRegg != null}"  th:text="${noRegg}"></span>
+						</div>
+		<div  th:fragment="mov"  >
+
 			
-				<table class="table" th:if="${mov != null}">
-				<h1>Movimientos Ventas</h1>
+
+			<div class="table-responsive" th:if="${filTab != null} ">
+<span style="float: right;" th:include="::buscar"></span>
+<h1><span class="badge badge-secondary">Movimientos Ventas</span></h1>
+
 				
-					<tr th:each="m : ${mov}">
-					<td th:text="${m.idVenta}"></td>
-					<!--  <td th:text="${m.usuario}"></td>-->
-					<td th:text="${m.IDproducto}"></td>
-					<td th:text="${m.descripcion}"></td>
-					<td th:text="${m.fecha}"></td>
-					<td th:text="${m.cant}"></td>
-					<td th:text="${m.precioSIVA}"></td>
-					<td th:text="${m.oferta}"></td>
-					<td th:text="${m.importe}"></td>
-					</tr>
-				</table>
+				<table class="table table-bordered" >
+						<div class="pageUp" 
+				th:classappend="${reciente == pagi ? 'active' : ''}">
+				<nav aria-label="pag">
+					<ul class="pagination ">
+
+						<li class="page-item"
+							th:classappend="${Anter == 0 ? 'disabled': ''}"><a
+							class="page-link" th:if="${Anter != null}"
+							th:href="@{|/mov?nume=${Anter}|}">Ant</a></li>
+
+						<li class="page-item" th:each="pa : ${nume}"
+							th:classappend="${rec == pa ? 'active' : ''}"><a
+							class="page-link" th:href="@{|/mov?nume=${pa}|}" th:text="${pa}"></a></li>
+
+						<li class="page-item"
+							th:classappend="${rec == Ult ? 'disabled' : ''}"><a
+							class="page-link" th:if="${Sigue != null}"
+							th:href="@{|/mov?nume=${Sigue}|}">Sig</a></li>
+
+					</ul>
+				</nav>
 			</div>
-</div>
+				
+					
+					<thead class="thead-dark">
+
+						<tr>
+	
+							<th>IdVenta</th>
+							<th>Usuario</th>
+							<th>Detalle Venta</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="m : ${filTab}">
+							<td th:text="${m.idVenta}"></td>
+							<td th:text="${m.usuario}"></td>
+
+							<td>
+
+								<table class="table table-bordered ">
+
+									<thead class="table-active">
+										<tr>
+											<th>idProducto</th>
+											<th>Descripcion</th>
+											<th>Fecha</th>
+											<th>Cantidad</th>
+											<th>PrecioSinIva</th>
+											<th>OFERTA</th>
+											<th>Importe</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="d : ${m.detallevtas}">
+											<td th:text="${d.IDproducto}"></td>
+											<td th:text="${d.descripcion}"></td>
+											<td th:text="*{{d.fecha}}"></td>
+											<td th:text="${d.cant}"></td>
+											<td th:text="${d.precioSIVA}"></td>
+											<td th:text="${d.oferta}"></td>
+											<td th:text="${d.importe}"></td>
+										</tr>
+									</tbody>
+								</table>
+
+							</td>
+						</tr>
+
+
+					</tbody>
+				</table>
+				
+			</div>
+
+
+			<div class="pageDown"
+				th:classappend="${reciente == pagi ? 'active' : ''}" >
+				<nav aria-label="pag">
+					<ul class="pagination justify-content-center">
+
+						<li class="page-item"
+							th:classappend="${Anter == 0 ? 'disabled': ''}"><a
+							class="page-link" th:if="${Anter != null}"
+							th:href="@{|/mov?nume=${Anter}|}">Ant</a></li>
+
+						<li class="page-item" th:each="pa : ${nume}"
+							th:classappend="${rec == pa ? 'active' : ''}"><a
+							class="page-link" th:href="@{|/mov?nume=${pa}|}" th:text="${pa}"></a></li>
+
+						<li class="page-item"
+							th:classappend="${rec == Ult ? 'disabled' : ''}"><a
+							class="page-link" th:if="${Sigue != null}"
+							th:href="@{|/mov?nume=${Sigue}|}">Sig</a></li>
+
+					</ul>
+				</nav>
+			</div>
+
+
+
+
+
+
+
+		</div>
+
+	</div>
 </div>
 </body>
 </html>

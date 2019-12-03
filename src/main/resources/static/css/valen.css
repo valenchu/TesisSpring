@@ -44,8 +44,11 @@ ul
 	
 }
 .pageUp{
-	float: right;
+	
 }
 .pageDown{
+	float: right;
+}
+.botonCerrar{
 	float: right;
 }

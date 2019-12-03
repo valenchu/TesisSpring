@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="fragments/headini :: head"></th:block>
+
+</head>
+<body>
+	<div class="container">
+
+		<div th:fragment="movv">
+			<div class="table-responsive" th:if="${fecha != null}">
+								
+<div style="float: right;" th:include="fragments/movimiento ::buscar"></div>
+	<h1 ><span class="badge badge-secondary">Movimientos Ventas</span></h1>
+				<table class="table table-bordered">
+
+
+
+
+
+				
+					<div class="pageUp" th:classappend="${rec == pa ? 'active' : ''}">
+						<nav aria-label="pag">
+							<ul class="pagination ">
+
+								<li class="page-item"
+									th:classappend="${Anter == 0 ? 'disabled': ''}"><a
+									class="page-link" th:if="${Anter != null}"
+									th:href="@{|/fecha?desde=${desde}&hasta=${hasta}&nume=${Anter}|}">Ant</a></li>
+
+								<li class="page-item" th:each="pa : ${nume}"
+									th:classappend="${rec == pa ? 'active' : ''}"><a
+									class="page-link" th:href="@{|/fecha?desde=${desde}&hasta=${hasta}&nume=${pa}|}"
+									th:text="${pa}"></a></li>
+
+								<li class="page-item"
+									th:classappend="${rec == Ult ? 'disabled' : ''}"><a
+									class="page-link" th:if="${Sigue != null}"
+									th:href="@{|/fecha?desde=${desde}&hasta=${hasta}&nume=${Sigue}|}">Sig</a></li>
+									
+
+							</ul>
+						</nav>
+					</div>
+			
+				
+					<thead class="thead-dark">
+						<tr>
+							<th>IdVenta</th>
+							<th>Usuario</th>
+							<th>Detalle Venta</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="n : ${fecha}">
+							<td th:text="${n.idVenta}"></td>
+							<td th:text="${n.usuario}"></td>
+							<td>
+								<table class="table table-bordered ">
+									<thead class="table-active">
+										<tr>
+											<th>idProducto</th>
+											<th>Descripcion</th>
+											<th>Fecha</th>
+											<th>Cantidad</th>
+											<th>PrecioSinIva</th>
+											<th>OFERTA</th>
+											<th>Importe</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="i : ${n.detallevtas}">
+
+											<td th:text="${i.IDproducto}"></td>
+											<td th:text="${i.descripcion}"></td>
+											<td th:text="*{{i.fecha}}"></td>
+											<td th:text="${i.cant}"></td>
+											<td th:text="${i.precioSIVA}"></td>
+											<td th:text="${i.oferta}"></td>
+											<td th:text="${i.importe}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					
+				</table>
+				
+			</div>
+
+
+		</div>
+
+
+	
+		<br />
+	</div>
+</body>
+</html>
