@@ -89,9 +89,35 @@ public class ProductoServicio {
 		return m;
 	}
 
-	public ModelMap buscarPorCant(int num, ModelMap m) {
-		List<Productos> p = productosRepository.findByCant(num);
+	public ModelMap buscarPorCant(String cantMi, String cantMa, ModelMap m) {
+		List<Productos> p = null;
+		boolean errorM = false;
+		boolean busqueda=false;
+		int cantMin = 0;
+		int cantMax = 0;
+		if(cantMi.isEmpty() || cantMa.isEmpty() || cantMi.equals("") || cantMa.equals("") || cantMa.equals(null) || cantMi.equals(null)) {
+			errorM = false;
+		}else if(cantMi.equals("[a-zA-Z!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~]") || cantMa.equals("[a-zA-Z!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~]")) {
+			errorM = false;	
+		}else {
+			cantMin = Integer.valueOf(cantMi);
+			cantMax = Integer.valueOf(cantMa);
+			
+		}
+		if(cantMin <= cantMax && cantMin > 0 && cantMin != 0) {
+			errorM = true;
+		
+		}	
+		if(errorM == true) {
+			p =productosRepository.findByCantBetweenCantminAndCantmax(cantMin, cantMax);
+		}
+		if(p != null && !p.isEmpty() &&  p.size() != 0) {
+		busqueda=true;	
 		m.addAttribute("lista", p);
+		}
+		
+		m.addAttribute("erroMR" , errorM);
+		m.addAttribute("busc", busqueda);
 		return m;
 	}
 

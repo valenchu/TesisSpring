@@ -13,6 +13,8 @@
 <div >
 <div th:if="${filTab != null}"> <th:block th:replace="fragments/movimiento :: mov"></th:block></div>
 <th:block th:if="${fecha != null}" th:replace="fragments/prueba :: movv"></th:block>
+<th:block th:if="${tor != null}" th:include="tblProductos :: cant"></th:block>
+<th:block th:if="${lista != null}" th:replace="tblProductos :: tblCant"></th:block>
 </div>
 <br>
 <th:block th:include="fragments/pie :: pie"></th:block>

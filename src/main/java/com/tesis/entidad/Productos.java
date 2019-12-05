@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class Productos implements Serializable {
 	@Column(name = "PrecioConIVA")
 	private double precioconiva;
 	@Column(name = "Cantidad")
+	@NotNull(message = "Ingrese un numero en los campos por favor!")
 	private int cant;
 	@Column(name = "Oferta")
 	private int oferta;

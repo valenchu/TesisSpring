@@ -7,6 +7,8 @@
 <body>
 
 	<div class="container">
+
+
 		<div th:fragment="stock">
 
 			<div>
@@ -36,19 +38,61 @@
 							</ul>
 						</nav>
 					</div>
-					<div style="float: right;">
-						<form action="#" th:action="@{/tor}" method="get">
-							<input th:type="text" th:name="cant" placeholder="Ingrese CANT">
-							<button type="submit">APRETAME</button>
 
 
+					<!-- TABLA RESULTADOS POR CANTIDAD -->
+
+					<div style="float: left;" th:fragment="cant">
+						
+						<br/>
+						<form th:action="@{/tor{}{}}" method="get" >
+						<button class="btn btn-secondary btn-sm" style="margin-bottom: 1%;" type="submit">BUSCAR</button>
+							<input th:type="text" th:name="cantMin"
+								placeholder="Ingrese cantidad minima"> 
+								
+								<input th:type="text" th:name="cantMax"
+								placeholder="Ingrese cantidad maxima">
+								<span class="badge badge-danger" th:if="${errorMS != null}" th:text="${errorMS}"></span>
+								<span class="badge badge-danger" th:if="${errorMSbusc != null}" th:text="${errorMSbusc}"></span>
 						</form>
-						<tr th:each="a : ${lista}">
-							<td th:text="${t.idProducto}"></td>
-							<td th:text="${t.descripcio}"></td>
-
-						</tr>
 					</div>
+					<div>
+						<table class="table" th:if="${lista != null}"
+							th:fragment="tblCant">
+							
+							<h1>
+								<span class="badge badge-secondary">Stock Productos</span>
+							</h1>
+							<div th:include=":: cant"></div>
+
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Descripción</th>
+									<th scope="col">PrecioS/IVA</th>
+									<th scope="col">PrecioC/IVA</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Oferta</th>
+									<th scope="col">AltaBajaPro</th>
+									<th scope="col">AltaBajaPed</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="a : ${lista}">
+									<td th:text="${a.idProducto}"></td>
+									<td th:text="${a.descripcio}"></td>
+									<td th:text="${a.preciosiniva}"></td>
+									<td th:text="${a.precioconiva}"></td>
+									<td th:text="${a.cant}"></td>
+									<td th:text="${a.oferta}"></td>
+									<td th:text="${a.alta_baja_productos}"></td>
+									<td th:text="${a.alta_baja_pedidos}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<!-- TABLA PRINCIPAL DE STOCK -->
 
 					<thead class="thead-dark">
 						<tr>
@@ -97,6 +141,9 @@
 					</ul>
 				</nav>
 			</div>
+
+
+
 		</div>
 
 	</div>

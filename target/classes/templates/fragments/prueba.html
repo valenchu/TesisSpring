@@ -8,18 +8,23 @@
 <body>
 	<div class="container">
 
+		
+
 		<div th:fragment="movv">
 			<div class="table-responsive" th:if="${fecha != null}">
-								
-<div style="float: right;" th:include="fragments/movimiento ::buscar"></div>
-	<h1 ><span class="badge badge-secondary">Movimientos Ventas</span></h1>
+
+				<div style="float: right;"
+					th:include="fragments/movimiento ::buscar"></div>
+				<h1>
+					<span class="badge badge-secondary">Movimientos Ventas</span>
+				</h1>
 				<table class="table table-bordered">
 
 
 
 
 
-				
+
 					<div class="pageUp" th:classappend="${rec == pa ? 'active' : ''}">
 						<nav aria-label="pag">
 							<ul class="pagination ">
@@ -31,20 +36,21 @@
 
 								<li class="page-item" th:each="pa : ${nume}"
 									th:classappend="${rec == pa ? 'active' : ''}"><a
-									class="page-link" th:href="@{|/fecha?desde=${desde}&hasta=${hasta}&nume=${pa}|}"
+									class="page-link"
+									th:href="@{|/fecha?desde=${desde}&hasta=${hasta}&nume=${pa}|}"
 									th:text="${pa}"></a></li>
 
 								<li class="page-item"
 									th:classappend="${rec == Ult ? 'disabled' : ''}"><a
 									class="page-link" th:if="${Sigue != null}"
 									th:href="@{|/fecha?desde=${desde}&hasta=${hasta}&nume=${Sigue}|}">Sig</a></li>
-									
+
 
 							</ul>
 						</nav>
 					</div>
-			
-				
+
+
 					<thead class="thead-dark">
 						<tr>
 							<th>IdVenta</th>
@@ -85,16 +91,16 @@
 							</td>
 						</tr>
 					</tbody>
-					
+
 				</table>
-				
+
 			</div>
 
 
 		</div>
 
 
-	
+
 		<br />
 	</div>
 </body>

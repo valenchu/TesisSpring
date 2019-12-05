@@ -12,9 +12,9 @@
 							<div style="text-align: center;">
 								<h5 ><span class="badge badge-dark" > Desde </span></h5> <input th:type="date" th:name="desde" />
 
-								<h5 ><span class="badge badge-dark" > Hasta </span></h5> <input th:type="date" th:name="hasta" />
+								<h5 ><span class="badge badge-dark" > Hasta </span></h5> <input style="margin-bottom: 1%;" th:type="date" th:name="hasta" />
 								<br/>
-								<button type="submit" >Buscar por fecha</button>	
+								<button class="btn btn-secondary btn-sm" style="margin-bottom: 1%;" type="submit" >Buscar por fecha</button>	
 							</div>	
 												
 						</form>	
@@ -31,7 +31,7 @@
 
 				
 				<table class="table table-bordered" >
-						<div class="pageUp" 
+						<div class="pageUpis" 
 				th:classappend="${reciente == pagi ? 'active' : ''}">
 				<nav aria-label="pag">
 					<ul class="pagination ">

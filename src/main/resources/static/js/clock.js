@@ -7,7 +7,7 @@ var udateTime = function() {
         minutes = currentDate.getMinutes(), 
         seconds = currentDate.getSeconds(),
         weekDay = currentDate.getDay(), 
-        day = currentDate.getDay(), 
+        day = currentDate.getDate(), 
         month = currentDate.getMonth(), 
         year = currentDate.getFullYear();
  
@@ -58,4 +58,4 @@ var udateTime = function() {
  
 udateTime();
  
-setInterval(udateTime, 1000);
+setInterval(udateTime, 100);

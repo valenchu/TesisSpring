@@ -44,11 +44,55 @@ ul
 	
 }
 .pageUp{
-	
+	float: right;
 }
 .pageDown{
 	float: right;
 }
 .botonCerrar{
 	float: right;
+}
+#mediana{
+	width: 700px; height: 370px;
+	margin: 3%
+}
+.prueba{
+	transition: transform 1s;
+}
+.prueba:hover{
+	transform:scale(1.2);
+	
+
+	}
+.escalarIMG{
+	transition: transform 1s;
+}
+.escalarIMG:hover{
+	transform:scale(1);
+}
+.InicioSesion {
+  background-color: #fafafa;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  /* IMPORTANTE */
+  text-align: center;
+ justify-content:center;
+}
+#ingresarBTN{
+	
+padding-left: 4%;
+padding-right: 4%;
+
+}
+.contra{
+	padding-left: 35%;
+	padding-right: 35%;
+	align-items: center;
+}
+.user{
+	padding-left: 35%;
+	padding-right: 35%;
+	align-items: center;
+	
 }
