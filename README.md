@@ -13,9 +13,11 @@
 ## Diagrama DER BD
 ***
 ![](https://github.com/valenchu/TesisEnMaven/blob/master/Instaladores/DatosTeoricosTesis/DiagramaDER.png)
-## _VISTAS APP SWING LIBSOFT_
+## _VISTAS APP WEB LIBSOFT_
 
-## Inicio
+<p align="center">
+  <img  src="https://github.com/valenchu/TesisEnMaven/blob/master/Instaladores/DatosTeoricosTesis/Logo%20Imagenes/Pantallas/AppWebPantallas/SpringWeb.jpg">
+</p>
 
 
 ## [Todas los datos aca](https://github.com/valenchu/TesisEnMaven/tree/master/Instaladores/DatosTeoricosTesis)
