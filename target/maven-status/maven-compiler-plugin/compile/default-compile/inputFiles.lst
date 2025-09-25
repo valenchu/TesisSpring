@@ -11,8 +11,11 @@
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/Tesis1Application.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/servicio/Constantes.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/servicio/ManejadorDeServicios.java
+/home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/entidad/Persona.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/controller/ControladorMovimiento.java
+/home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/dto/PersonaRecord.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/repo/UsuarioRepository.java
+/home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/repo/PersonaRepository.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/servicio/MovimientoServicio.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/entidad/Usuarios.java
 /home/runner/work/TesisSpring/TesisSpring/src/main/java/com/tesis/dto/VentaDTO.java
